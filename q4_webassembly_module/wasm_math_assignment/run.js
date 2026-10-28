@@ -6,7 +6,7 @@ const wasmPath = path.join(
   "target",
   "wasm32-unknown-unknown",
   "release",
-  "wasm_math.wasm",
+  "wasm_math_assignment.wasm",
 );
 const wasmBuffer = fs.readFileSync(wasmPath);
 
