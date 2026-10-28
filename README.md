@@ -1,5 +1,13 @@
 # FSAD SEZG503 Assignment BITS-WILP Division
 
+| Tool / Environment | Recommended Version | Release Context |
+|---|---|---|
+| **Rust (`rustc`)** | **1.99.1** | The latest stable release as of mid-October 2026. |
+| **Cargo** | **1.99.1** | Bundled automatically with Rust 1.99.1. |
+| **Node.js** | **v26.x** or **v24.22.x** | Node 26 transitions to Active LTS on October 28, 2026. Node 24.22.0 remains a highly stable, Active LTS option. |
+| **npm** | **12.2.1** or newer | Bundled automatically with the latest Node.js 24.22 LTS releases. |
+| **WebAssembly Target** | `wasm32-unknown-unknown` | This is a target architecture rather than a standalone tool, so its capabilities strictly align with your installed Rust version. |
+
 ### Question 1: React ToDo App with Local Storage
 
 It is a React-based ToDo application that persists user tasks using the browser's localStorage API, ensuring data isn't lost when the page is refreshed.
