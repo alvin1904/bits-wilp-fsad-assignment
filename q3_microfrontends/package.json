@@ -1,0 +1,11 @@
+{
+  "name": "q3-microfrontends",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node start-all.js",
+    "start:shell": "npm --prefix Shell start",
+    "start:fsad": "npm --prefix FSAD start",
+    "start:apiproducts": "npm --prefix ApiProducts start"
+  }
+}

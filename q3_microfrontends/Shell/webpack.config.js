@@ -5,8 +5,14 @@ const ModuleFederationPlugin = webpack.container.ModuleFederationPlugin;
 
 export default {
   mode: "development",
+  output: {
+    publicPath: "auto",
+  },
   devServer: {
     port: 3000, // Shell runs on port 3000
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
   module: {
     rules: [
@@ -37,8 +43,8 @@ export default {
         apiProducts: "apiProductsApp@http://localhost:4000/remoteEntry.js",
       },
       shared: {
-        react: { singleton: true, requiredVersion: "^18.0.0" },
-        "react-dom": { singleton: true, requiredVersion: "^18.0.0" },
+        react: { singleton: true, requiredVersion: "^19.0.0" },
+        "react-dom": { singleton: true, requiredVersion: "^19.0.0" },
       },
     }),
     new HtmlWebpackPlugin({

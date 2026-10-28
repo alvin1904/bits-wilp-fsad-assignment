@@ -6,8 +6,18 @@ const ModuleFederationPlugin = webpack.container.ModuleFederationPlugin;
 export default {
   mode: "development",
 
+  output: {
+    publicPath: "auto",
+  },
+
   devServer: {
     port: 4000,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers":
+        "X-Requested-With, content-type, Authorization",
+    },
   },
 
   module: {
@@ -34,7 +44,7 @@ export default {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "apiProducts",
+      name: "apiProductsApp",
       filename: "remoteEntry.js",
 
       exposes: {
@@ -44,11 +54,11 @@ export default {
       shared: {
         react: {
           singleton: true,
-          requiredVersion: "^18.0.0",
+          requiredVersion: "^19.0.0",
         },
         "react-dom": {
           singleton: true,
-          requiredVersion: "^18.0.0",
+          requiredVersion: "^19.0.0",
         },
       },
     }),
