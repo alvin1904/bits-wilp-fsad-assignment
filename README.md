@@ -43,4 +43,28 @@ How to Run
 
 ---
 
-### Question 2: React 
+### Question 2: React Color Palette App
+
+# Question 2: Color Palette Manager
+
+It is a React application that allows users to dynamically add, remove, and select colors. The application state and logic are cleanly organized using a custom `useColorPalette` hook and shared across components using the React Context API.
+
+## How to Run
+
+1. Open your terminal and navigate to this project directory.
+
+2. Install the required dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to the local URL provided in the terminal usually `http://localhost:5173` to view the application.
+
+---
+
+### Question 3: Microfrontends using Webpack module federation
