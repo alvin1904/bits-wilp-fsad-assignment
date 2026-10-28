@@ -67,7 +67,7 @@ It is a React application that allows users to dynamically add, remove, and sele
 
 ---
 
-### Question 3: Microfrontends using Webpack module federation
+## Question 3: Microfrontends using Webpack module federation
 
 It demonstrates a Microfrontend architecture built with Webpack 5 Module Federation. The project is split into three independent applications:
 - **Shell**: The host container running on port 3000.
@@ -100,3 +100,11 @@ Because this architecture relies on independent micro-applications, you need to 
    ```
 
 Once all three servers are running, open your browser and navigate to **http://localhost:3000**. The Shell application will dynamically fetch and render the components from the remote servers.
+
+## Question 4: Web Assembly Module
+
+If no rust is installed
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+
+rustup target add wasm32-unknown-unknown
