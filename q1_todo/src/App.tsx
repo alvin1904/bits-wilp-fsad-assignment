@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoWrapper from "./components/todo/TodoWrapper";
 import { Trash2Icon } from "lucide-react";
 
@@ -9,7 +9,18 @@ type TodoType = {
 };
 
 function App() {
-  const [todos, setTodos] = useState<TodoType[]>([]);
+  const [todos, setTodos] = useState<TodoType[]>(() => {
+    const saved = localStorage.getItem("my-todos");
+    if (saved) {
+      return JSON.parse(saved);
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("saved-todos", JSON.stringify(todos));
+  }, [todos]);
+
   const [newTodo, setNewTodo] = useState<string>("");
 
   const handleAddTodo = (e: React.SubmitEvent<HTMLFormElement>) => {
