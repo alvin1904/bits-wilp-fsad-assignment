@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TodoWrapper from "./components/todo/TodoWrapper";
+import { Trash2Icon } from "lucide-react";
 
 type TodoType = {
   id: string;
@@ -41,63 +42,72 @@ function App() {
   const activeCount = todos.filter((todo) => !todo.completed).length;
 
   return (
-    <TodoWrapper heading="FSAD ToDo App">
-      <form onSubmit={handleAddTodo}>
-        <input
-          type="text"
-          placeholder="What needs to be done?"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-          aria-label="New todo"
-        />
-        <button type="submit" disabled={!newTodo.trim()}>
-          Add
-        </button>
-      </form>
+    <div className="main">
+      <TodoWrapper heading="FSAD ToDo App">
+        <form onSubmit={handleAddTodo}>
+          <input
+            type="text"
+            placeholder="What needs to be done?"
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
+            aria-label="New todo"
+          />
+        </form>
 
-      <div>
-        {todos.length === 0 ? (
-          <p>{todos.length === 0 && "No todos yet. Add one above!"}</p>
-        ) : (
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            {todos.map((todo) => (
-              <li key={todo.id}>
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  onChange={() => handleToggleTodo(todo.id)}
-                  aria-label={`Mark "${todo.text}" as ${
-                    todo.completed ? "active" : "completed"
-                  }`}
-                />
-                <span
-                  style={{
-                    textDecoration: todo.completed ? "line-through" : "none",
-                    opacity: todo.completed ? 0.6 : 1,
-                    margin: "0 8px",
+        <div className="todo-content">
+          {todos.length === 0 ? (
+            <p>{todos.length === 0 && "No todos yet. Add one above!"}</p>
+          ) : (
+            <ul style={{ listStyle: "none", padding: 0 }}>
+              {todos.map((todo) => (
+                <li
+                  key={todo.id}
+                  onClick={() => {
+                    handleToggleTodo(todo.id);
                   }}
                 >
-                  {todo.text}
-                </span>
-                <button type="button" onClick={() => handleDeleteTodo(todo.id)}>
-                  Delete
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
+                  <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    aria-label={`Mark "${todo.text}" as ${
+                      todo.completed ? "active" : "completed"
+                    }`}
+                  />
+                  <span
+                    style={{
+                      textDecoration: todo.completed ? "line-through" : "none",
+                      opacity: todo.completed ? 0.6 : 1,
+                      margin: "0 8px",
+                    }}
+                  >
+                    {todo.text}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteTodo(todo.id);
+                    }}
+                  >
+                    <Trash2Icon size={16} />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
 
-        {todos.length > 0 && (
-          <div>
-            <span>
-              {activeCount > 0
-                ? `${activeCount} ${activeCount === 1 ? "item" : "items"} left`
-                : "All tasks done!"}
-            </span>
-          </div>
-        )}
-      </div>
-    </TodoWrapper>
+          {todos.length > 0 && (
+            <div>
+              <span>
+                {activeCount > 0
+                  ? `${activeCount} ${activeCount === 1 ? "item" : "items"} left`
+                  : "All tasks done!"}
+              </span>
+            </div>
+          )}
+        </div>
+      </TodoWrapper>
+    </div>
   );
 }
 
