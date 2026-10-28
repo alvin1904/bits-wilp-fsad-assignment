@@ -68,3 +68,35 @@ It is a React application that allows users to dynamically add, remove, and sele
 ---
 
 ### Question 3: Microfrontends using Webpack module federation
+
+It demonstrates a Microfrontend architecture built with Webpack 5 Module Federation. The project is split into three independent applications:
+- **Shell**: The host container running on port 3000.
+- **FSAD**: A remote microapp running on port 4001.
+- **ApiProducts**: A remote microapp running on port 4000.
+
+## How to Run
+
+Because this architecture relies on independent micro-applications, you need to start the development server for all three projects.
+
+1. **Start the FSAD Remote**
+   Open a terminal, navigate to the `FSAD` folder:
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+2. **Start the ApiProducts Remote**
+   Open a second terminal, navigate to the `ApiProducts` folder:
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+3. **Start the Shell (Host)**
+   Open a third terminal, navigate to the `Shell` folder:
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+Once all three servers are running, open your browser and navigate to **http://localhost:3000**. The Shell application will dynamically fetch and render the components from the remote servers.
